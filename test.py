@@ -244,6 +244,8 @@ def plot_spectrogram(audio_file1, audio_file2, sample_duration=0):
     plt.title(audio_file2)
     plt.show()
 
+    return score
+
 # Example usage
 if __name__ == "__main__":
     if len(sys.argv) < 3:
@@ -251,7 +253,7 @@ if __name__ == "__main__":
         exit()
     
     signal.signal(signal.SIGINT, signal.SIG_DFL)
-    # matplotlib.use('TkAgg')
+    matplotlib.use('TkAgg')
     audio_file1 = sys.argv[1]  # Replace with your audio file path
     audio_file2 = sys.argv[2] # Replace with your audio file path
 
