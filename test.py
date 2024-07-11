@@ -69,6 +69,7 @@ def rateFrequency( a, b, factor, giveNegative=False):
 
 #gos through full song
 def plot_spectrogram(audio_file1, audio_file2, sample_duration=0):
+    matplotlib.use('TkAgg')
 
     first, sr1 = get_aplitude_to_db(audio_file1, sample_duration)
     second, sr2 = get_aplitude_to_db(audio_file2, sample_duration)
@@ -247,17 +248,16 @@ def plot_spectrogram(audio_file1, audio_file2, sample_duration=0):
     return score
 
 # Example usage
-if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        print("not enough arguments, program.exe song1.mp3 song2.mp3 <seconds> (optional)")
-        exit()
+# if __name__ == "__main__":
+#     if len(sys.argv) < 3:
+#         print("not enough arguments, program.exe song1.mp3 song2.mp3 <seconds> (optional)")
+#         exit()
     
-    signal.signal(signal.SIGINT, signal.SIG_DFL)
-    matplotlib.use('TkAgg')
-    audio_file1 = sys.argv[1]  # Replace with your audio file path
-    audio_file2 = sys.argv[2] # Replace with your audio file path
+#     signal.signal(signal.SIGINT, signal.SIG_DFL)
+#     audio_file1 = sys.argv[1]  # Replace with your audio file path
+#     audio_file2 = sys.argv[2] # Replace with your audio file path
 
-    duration = 0
-    if len(sys.argv) == 4:
-        duration = int(sys.argv[3])
-    plot_spectrogram(audio_file1, audio_file2, duration)
+#     duration = 0
+#     if len(sys.argv) == 4:
+#         duration = int(sys.argv[3])
+#     plot_spectrogram(audio_file1, audio_file2, duration)

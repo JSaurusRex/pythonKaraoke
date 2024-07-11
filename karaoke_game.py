@@ -77,13 +77,15 @@ def play_and_record(video_path, mic_index, delay_ms):
     # Stop recording
     stop_event.set()
     record_thread.join()
+    f = open(video_path+".do", "a")
+    f.write("please judge")
+    f.close()
+
     print("recording and playback done")
 
 # GUI for selecting the microphone and video file
 def select_mic_and_play(video_path):
     devices = list_microphones()
-
-    done = False
     
     def start_recording():
         selected_mic = mic_listbox.curselection()
@@ -92,7 +94,6 @@ def select_mic_and_play(video_path):
             mic_index = devices[selected_mic[0]][0]
             # video_path = filedialog.askopenfilename(filetypes=[("MP4 files", "*.mp4")])
             if video_path:
-                done = True
                 play_and_record(video_path, mic_index, delay_ms)
                 root.quit()
                 root.destroy()
@@ -116,8 +117,6 @@ def select_mic_and_play(video_path):
     start_button.pack()
     
     root.mainloop()
-
-    return done
 
 # Run the GUI
 # select_mic_and_play()

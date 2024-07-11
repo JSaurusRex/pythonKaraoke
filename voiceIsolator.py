@@ -85,9 +85,13 @@ def isolate_vocals(input_file, output_dir, used_ytdl):
     # Ensure the output directory exists
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
+    
+    print("beginning with isolating vocals")
 
     # Initialize the Spleeter separator with 2stems (vocals + accompaniment)
     separator = Separator('spleeter:2stems')
+
+    print("isolating completed!, now saving to file")
 
     # Perform the separation
     separator.separate_to_file(input_file, output_dir)
@@ -128,11 +132,11 @@ def run(arg1):
 
     isolate_vocals(input_file, output_dir, used_ytdl)
 
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python isolate_vocals.py <input_mp3_file / http>")
-        sys.exit(1)
+# if __name__ == "__main__":
+#     if len(sys.argv) != 2:
+#         print("Usage: python isolate_vocals.py <input_mp3_file / http>")
+#         sys.exit(1)
     
-    run(sys.argv[1])
+#     run(sys.argv[1])
 
     
